@@ -19,4 +19,4 @@ jobs:
           cache: maven
 
       - name: Run Java Test
-        run: mvn test-compile exec:java -Dexec.mainClass="AppTesting.PartyMonsterTest" -Dexec.classpathScope="test" -Dexec.cleanupDaemonThreads=false -e
+        run: mvn compile exec:java -Dexec.mainClass="AppTesting.PartyMonsterTest" -e
