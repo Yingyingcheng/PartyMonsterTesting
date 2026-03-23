@@ -1,46 +1,37 @@
-package AppTesting;
+package AppTesting; // MUST match your folder name
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions; // Added this import
+import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
-
 
 public class PartyMonsterTest {
     public static void main(String[] args) {
-        // 1. Setup Options for Automation (No hardcoded paths!)
+        // IMPORTANT: No System.setProperty for ChromeDriver here!
+
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--window-size=1920,1080"); // Helps avoid element-not-found errors
+        options.addArguments("--headless=new");      // Required for GitHub
+        options.addArguments("--no-sandbox");        // Required for Linux
+        options.addArguments("--disable-dev-shm-usage"); // Prevents memory crashes
+        options.addArguments("--window-size=1920,1080");
 
         WebDriver driver = new ChromeDriver(options);
-
-        // 2. Set an Implicit Wait
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
         try {
-            // 3. Navigate to the Join page
+            System.out.println("Starting test...");
             driver.get("https://partymonster.app/join");
 
-            // Note: Window maximize still works in headless mode to set viewport size
-            driver.manage().window().maximize();
+            System.out.println("Page Title: " + driver.getTitle());
 
-            System.out.println("Successfully reached: " + driver.getTitle());
-
-            // 5. Verification
             if (driver.getCurrentUrl().contains("join")) {
                 System.out.println("JOIN PAGE TEST: PASSED");
-            } else {
-                System.out.println("JOIN PAGE TEST: FAILED (Wrong URL)");
             }
-
         } catch (Exception e) {
-            System.out.println("TEST FAILED: " + e.getMessage());
-            // This ensures the GitHub Action shows a "Red X" if it fails
-            throw new RuntimeException(e);
+            System.out.println("CRASH DURING TEST: " + e.getMessage());
+            e.printStackTrace(); // This sends the details to the GitHub log
+            System.exit(1);      // Tells GitHub the test failed
         } finally {
-            // 6. Close browser
             if (driver != null) {
                 driver.quit();
             }
