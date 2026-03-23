@@ -1,7 +1,9 @@
+package AppTesting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions; // Added this import
 import java.time.Duration;
+
 
 public class PartyMonsterTest {
     public static void main(String[] args) {
