@@ -29,7 +29,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>AppTesting.PartyMonsterTest</mainClass>
+                    <mainClass>PartyMonsterTest</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
