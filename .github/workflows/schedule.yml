@@ -1,0 +1,22 @@
+name: 6-Hour Website Check
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Runs every 6 hours
+  workflow_dispatch:       # Allows you to click "Run" manually on GitHub
+
+jobs:
+  run-selenium-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run Java Test
+        run: mvn compile exec:java -Dexec.mainClass="PartyMonsterTest"
