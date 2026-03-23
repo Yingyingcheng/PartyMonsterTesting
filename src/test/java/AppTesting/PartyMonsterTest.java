@@ -9,9 +9,10 @@ public class PartyMonsterTest {
     public static void main(String[] args) {
         // 1. Setup Options for Automation (No hardcoded paths!)
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new"); // Required: Runs without a UI on GitHub
-        options.addArguments("--no-sandbox");   // Recommended for Linux environments
-        options.addArguments("--disable-dev-shm-usage"); // Prevents memory issues in Docker/GitHub
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--window-size=1920,1080"); // Helps avoid element-not-found errors
 
         WebDriver driver = new ChromeDriver(options);
 
