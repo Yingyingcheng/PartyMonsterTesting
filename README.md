@@ -21,7 +21,7 @@ This repository manages an automated testing suite designed to verify the "Join"
 PartyMonsterTesting/
 ├── .github/
 │   └── workflows/
-│       └── check-server.yml
+│       └── schedule.yml
 ├── src/
 │   └── main/
 │       └── java/
