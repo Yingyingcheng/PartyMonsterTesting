@@ -17,6 +17,19 @@ This repository manages an automated testing suite designed to verify the "Join"
 - `PartyMonsterTest.java`: The core Java test class containing the Selenium logic.
 - `pom.xml`: Defines dependencies and the main class for Maven execution.
 
+```text
+PartyMonsterTesting/
+├── .github/
+│   └── workflows/
+│       └── check-server.yml
+├── src/
+│   └── main/
+│       └── java/
+│           └── PartyMonsterTest.java
+├── pom.xml
+└── README.md
+```
+
 ## 🤖 Automation Details
 The test runs automatically to ensure the service is always reachable without manual intervention.
 
